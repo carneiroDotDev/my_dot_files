@@ -1,0 +1,72 @@
+
+  set certificate_file=~/.mutt/certificates
+
+  set imap_keepalive=60
+  set reply_self=yes
+  set sort=mailbox-order
+  set pager_index_lines=10
+  set editor="vim"
+  set charset=iso-8859-1
+  set pager_stop
+  set header
+  set include
+  set autoedit
+  set edit_hdrs
+  set mime_forward=ask-yes
+  set quit=ask-no
+  set delete=ask-no
+  set move=no
+  set record=~/Mail/Out
+  set markers=no
+  set wrap_search=no
+  set print_cmd="enscript --word-wrap -X latin1 -o- >$HOME/Mail/printfile.ps"
+
+  ignore x-mailer user-agent
+
+  bind pager b previous-page
+  bind pager g top
+  bind pager G bottom
+  bind pager  previous-line
+  bind pager N search-opposite
+  bind index N search-opposite
+  bind index = imap-fetch-mail
+  bind index $ last-entry
+  bind index ^ first-entry
+
+  mono header  bold "^(From|Subject|Date|To|CC):"
+  mono quoted  bold
+  mono quoted1 underline
+  mono quoted2 bold
+  mono quoted3 underline
+  mono quoted4 bold
+  mono quoted5 underline
+  mono quoted6 bold
+  mono quoted7 underline
+
+  color normal     default       default
+  color hdrdefault black         white
+  color header     red           white   "^Date:"
+  color header     blue          white   "^From:"
+  color header     black         white   "^To:"
+  color header     red           white   "^CC:"
+  color header     brightdefault white   "^Subject:"
+  color attachment black         yellow
+  color quoted     blue          default
+  color quoted1    red           default
+  color quoted2    blue          default
+  color quoted3    red           default
+  color quoted4    blue          default
+  color quoted5    red           default
+  color quoted6    blue          default
+  color quoted7    red           default
+
+  set folder=imaps://mailget.usm.uni-muenchen.de
+  set spoolfile=+INBOX
+  mailboxes +INBOX
+  set smtp_url="smtp://mailto.usm.uni-muenchen.de"
+  set hostname=usm.uni-muenchen.de
+
+  set imap_user="luiz"
+  set from="luiz@usm.uni-muenchen.de"
+  set signature="~/.mutt/signature"
+
