@@ -1,0 +1,215 @@
+<?xml version="1.0"?>
+
+<JWM>
+
+   <!-- The root menu, if this is undefined you will not get a menu. -->
+   <!-- Additional RootMenu attributes: onroot, labeled, label -->
+   <!-- Additional Menu attributes: icon -->
+   <!-- Additional Program attributes: icon -->
+   <RootMenu height="20" onroot="123" labeled="true" label="Root Menu">
+      <Separator/>
+      <Program label="xterm">xterm</Program>
+      <Menu label="Applications">
+         <Program label="Gimp">gimp</Program>
+         <Program label="xv">xv</Program>
+      </Menu>
+      <Menu label="Utilities">
+         <Program>xcalc</Program>
+         <Program>xfontsel</Program>
+         <Program>xmag</Program>
+         <Program label="xprop">xprop | xmessage -title xprop -file -</Program>
+         <Program label="xwininfo">xwininfo | xmessage -title xwininfo -file -</Program>
+      </Menu>
+      <Separator/>
+      <Restart label="Restart"/>
+      <Exit label="Exit" confirm="true"/>
+   </RootMenu>
+
+   <Group>
+      <Class>XLoad</Class>
+      <Option>sticky</Option>
+      <Option>nolist</Option>
+      <Option>notitle</Option>
+   </Group>
+
+   <Group>
+      <Class>Clock</Class>
+      <Option>sticky</Option>
+      <Option>nolist</Option>
+      <Option>notitle</Option>
+      <Option>noborder</Option>
+   </Group>
+
+   <Group>
+      <Name>gkrellm</Name>
+      <Option>sticky</Option>
+      <Option>nolist</Option>
+      <Option>notitle</Option>
+      <Option>noborder</Option>
+   </Group>
+
+   <Group>
+      <Name>rxvt</Name>
+      <Option>vmax</Option>
+   </Group>
+
+   <!-- Additional Tray attributes: autohide, width, border, layer, layout -->
+   <Tray  x="0" y="-1" height="38">
+
+      <!-- Additional TrayButton attribute: label -->
+      <TrayButton label="JWM">root:1</TrayButton>
+
+      <TrayButton label="   ">showdesktop</TrayButton>
+
+      <!-- Additional Pager attributes; width, height -->
+      <Pager/>
+
+      <!-- Additional TaskList attribute: maxwidth -->
+      <TaskList/>
+
+      <Dock/>
+
+      <!-- Additional Swallow attribute: height -->
+      <Swallow name="xload" width="64">
+         xload -nolabel -bg black -fg red -hl white
+      </Swallow>
+
+      <Clock format=" %H:%M  ">
+        <!-- xterm -geometry 69x36- -2-36 +sb -bg gold -T calendar -e 'cal -s -y; echo -n "Press enter to quit: "; read dummy' -->
+        cal -s -y | xmessage -geometry --2-36 -name Calendar -buttons close -file -
+      </Clock>
+
+   </Tray>
+
+   <!-- Visual Styles -->
+
+   <WindowStyle>
+
+      <Width>4</Width>
+      <Height>20</Height>
+      <Font>Adobe Helvetica:bold:size=10</Font>
+
+      <Active>
+         <Text>black</Text>
+         <Title>yellow</Title>
+         <Corner>yellow</Corner>
+         <Outline>black</Outline>
+      </Active>
+
+      <Inactive>
+         <Text>gray</Text>
+         <Title>gray50</Title>
+         <Corner>gray50</Corner>
+         <Outline>black</Outline>
+      </Inactive>
+
+   </WindowStyle>
+
+   <TaskListStyle>
+      <Font>Adobe Helvetica:bold</Font>
+      <ActiveForeground>black</ActiveForeground>
+      <ActiveBackground>yellow</ActiveBackground>
+      <Foreground>gray50</Foreground>
+      <Background>gray</Background>
+   </TaskListStyle>
+
+   <!-- Additional TrayStyle attribute: insert -->
+   <TrayStyle>
+      <Font>Adobe Helvetica:bold</Font>
+      <Background>gray90</Background>
+      <Foreground>black</Foreground>
+   </TrayStyle>
+
+   <PagerStyle>
+      <Outline>black</Outline>
+      <Foreground>gray90</Foreground>
+      <Background>gray50</Background>
+      <ActiveForeground>yellow</ActiveForeground>
+      <ActiveBackground>lightblue</ActiveBackground>
+   </PagerStyle>
+
+   <MenuStyle>
+      <Font>Adobe Helvetica:bold</Font>
+      <Foreground>black</Foreground>
+      <Background>gray</Background>
+      <ActiveForeground>black</ActiveForeground>
+      <ActiveBackground>yellow</ActiveBackground>
+   </MenuStyle>
+
+   <PopupStyle>
+      <Font>Adobe Helvetica</Font>
+      <Outline>black</Outline>
+      <Foreground>black</Foreground>
+      <Background>yellow</Background>
+   </PopupStyle>
+
+   <IconPath>
+      $HOME/.icons
+   </IconPath>
+
+   <!-- Virtual Desktops -->
+   <!-- Desktop tags can be contained within Desktops for desktop names. -->
+   <Desktops count="3" width="3">
+
+      <!-- Default background. Note that a Background tag can be
+           contained within a Desktop tag to give a specific background
+           for that desktop.
+	       -->
+     <Background type="tile">/home/helix/hoffmann/pictures/PageBackground.jpg</Background>
+
+     <Desktop name="Desktop 1">
+       <Background type="image">/home/moon/luiz/Desktop/vim-move-shortcuts.png</Background>
+     </Desktop>
+     <Desktop name="Desktop 2">
+       <Background type="image">/home/moon/luiz/Desktop/alexis_bledel_text_charts_vim__1280x1024_wallpapername.com.jpg</Background>
+     </Desktop>
+     <Desktop name="Desktop 3">
+       <Background type="image">/home/moon/luiz/Desktop/vim-wallpapers.png</Background>
+     </Desktop>
+   </Desktops>
+
+   <!-- Double click speed (in milliseconds) -->
+   <DoubleClickSpeed>400</DoubleClickSpeed>
+
+   <!-- Double click delta (in pixels) -->
+   <DoubleClickDelta>2</DoubleClickDelta>
+
+   <!-- The focus model (sloppy or click) -->
+   <FocusModel>sloppy</FocusModel>
+
+   <!-- The snap mode (none, screen, or border) -->
+   <SnapMode distance="10">border</SnapMode>
+
+   <!-- The move mode (outline or opaque) -->
+   <MoveMode>opaque</MoveMode>
+
+   <!-- The resize mode (outline or opaque) -->
+   <ResizeMode>outline</ResizeMode>
+
+   <!-- Key bindings -->
+   <Key key="Up">up</Key>
+   <Key key="Down">down</Key>
+   <Key key="Right">right</Key>
+   <Key key="Left">left</Key>
+   <Key key="h">left</Key>
+   <Key key="j">down</Key>
+   <Key key="k">up</Key>
+   <Key key="l">right</Key>
+   <Key key="Return">select</Key>
+   <Key key="Escape">escape</Key>
+
+   <Key mask="A" key="Tab">nextstacked</Key>
+   <!-- <Key mask="A" key="F4">close</Key> -->
+   <Key mask="A" key="F1">root:1</Key>
+   <Key mask="A" key="F2">window</Key>
+   <Key mask="A" key="#">desktop#</Key>
+   <Key mask="C" key="Left">ldesktop</Key>
+   <Key mask="C" key="Right">rdesktop</Key>
+   <Key mask="A" key="Up">shade</Key>
+   <Key mask="A" key="Down">shade</Key>
+   <Key mask="A" key="T">exec:xfce4-terminal</Key>
+   <Key mask="A" key="n">minimize</Key>
+   <Key mask="A" key="m">maximize</Key>
+
+</JWM>
+
