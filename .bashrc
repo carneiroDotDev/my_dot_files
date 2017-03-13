@@ -9,10 +9,11 @@
 # NOTE: It is recommended to make language settings in ~/.profile rather than
 # here, since multilingual X sessions would not work properly if LANG is over-
 # ridden in every subshell.
+#export LANG=en_US.UTF-8     #This is normally the case, however check .profile
 
 # Some applications read the EDITOR variable to determine your favourite text
 # editor. So uncomment the line below and enter the editor of your choice :-)
-#export EDITOR=/usr/bin/vim
+export EDITOR=/usr/bin/vim
 #export EDITOR=/usr/bin/mcedit
 
 # For some news readers it makes sense to specify the NEWSSERVER variable here
@@ -27,13 +28,39 @@
 
 test -s ~/.alias && . ~/.alias || true
 
+#To be sure which fortran compiler is presently loaded.
 module unload fortran
 module load fortran/intel/15.0
 ifort -v
 
+#Typical directory that I have recently worked
+alias carbon='cd ~/Documents/Doktor/carbon/spectra_analysis/models'
+
+#Startup file to be read when IDL is loaded
 export IDL_STARTUP=/home/moon/luiz/idlproc/startup.pro
 
+#Include present directory in PATH
 export PATH=$PATH:.
+
+#Some alias to type as less as possible
+
+#alias +='pushd .'
+#alias -='popd'
+                #which is a program which shows the full path of (shell) commands
+alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'   
+
+alias beep='echo -en "\007"'
+
+alias l='ls -alF'
+alias la='ls -la'
+alias ll='ls -l --color=auto'
+alias ln='ln -i'
+alias ls='_ls'
+alias ls-l='ls -l'
+alias l.='ls -d .* --color=auto'
+
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
 
 alias gm='gvim'
 alias gr='gvim -R'
@@ -46,6 +73,7 @@ alias lid='idl'
 alias ldi='idl'
 
 alias lss='less'
+alias o='less'
 alias mr='more'
 
 alias mv='mv -i'  #ask for confirmation if overwriting'
@@ -58,6 +86,10 @@ alias .3='cd ../../../'
 alias .4='cd ../../../../'
 alias .5='cd ../../../../../'
 alias c="clear"
+
+alias rehash='hash -r'
+alias unmount='echo "Error: Try the command: umount" 1>&2; false'
+alias you='if test "$EUID" = 0 ; then /sbin/yast2 online_update ; else su - -c "/sbin/yast2 online_update" ; fi'
 
 # alias for the use of GIT
 #s="git status -s"
@@ -90,4 +122,13 @@ cls() { cd "$1"; ls;}  #cd into a directory and list its content: cls name.
 #    PS1='${debian_chroot:+($debian_chroot)}\u:\W\$ '
 #fi
 #or
-export PS1='$(whoami):${PWD/*\//}> '
+#export PS1='$(whoami):${PWD/*\//}> '
+export PS1='\[\033[0;36m\]\A\[\033[1;30m\] $(whoami):${PWD/*\//}> '
+#export PS1='$(whoami)@\h:${PWD/*\//}> '
+#This last one is really complex and Ive set just for educacional propose (an example):
+#export PS1="\[\033[s\033[0;0H\033[0;41m\033[K\033[1;33m\t\033[0m\033[u\]<\u@\h \W>\$ "
+
+# Ignore duplicates in command history and increase
+# history size to 1000 lines
+export HISTCONTROL=ignoredups
+export HISTSIZE=1000
