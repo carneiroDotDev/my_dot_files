@@ -55,8 +55,6 @@ alias l='ls -alF'
 alias la='ls -la'
 alias ll='ls -l --color=auto'
 alias ln='ln -i'
-alias ls='_ls'
-alias ls-l='ls -l'
 alias l.='ls -d .* --color=auto'
 
 alias egrep='egrep --color=auto'
@@ -72,8 +70,8 @@ alias ild='idl'   #open idl even when typo was made
 alias lid='idl'
 alias ldi='idl'
 
-alias lss='less'
-alias o='less'
+alias lss='less -JNIQ' #(J-status column, N-number of lines, I-ignorecase, Q-quiet)
+alias o='less -JNIQ'
 alias mr='more'
 
 alias mv='mv -i'  #ask for confirmation if overwriting'
