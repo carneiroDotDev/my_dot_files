@@ -62,6 +62,7 @@ alias fgrep='fgrep --color=auto'
 
 alias gm='gvim'
 alias gr='gvim -R'
+alias vd='vimdiff'
 
 alias acr='acroread' 
 alias mkr='mkdir'  
