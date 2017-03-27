@@ -35,6 +35,7 @@ ifort -v
 
 #Typical directory that I have recently worked
 alias carbon='cd ~/Documents/Doktor/carbon/spectra_analysis/models'
+crb() { cd ~/Documents/Doktor/carbon/spectra_analysis/models; ls;}
 
 #Startup file to be read when IDL is loaded
 export IDL_STARTUP=/home/moon/luiz/idlproc/startup.pro
@@ -54,6 +55,7 @@ alias beep='echo -en "\007"'
 alias l='ls -alF'
 alias la='ls -la'
 alias ll='ls -l --color=auto'
+alias lt='ls -t --color=auto'
 alias ln='ln -i'
 alias l.='ls -d .* --color=auto'
 
@@ -79,6 +81,11 @@ alias mv='mv -i'  #ask for confirmation if overwriting'
 alias cp='cp -i' 
 alias ln='ln -i'
 
+# dir navigation
+alias ~="cd ~" 
+alias cdd="cd ~/Desktop"
+alias ..='cd ..'
+alias ...='cd ../..'
 alias .1='cd ..' 
 alias .2='cd ../../' 
 alias .3='cd ../../../'
@@ -86,9 +93,19 @@ alias .4='cd ../../../../'
 alias .5='cd ../../../../../'
 alias c="clear"
 
+alias d=diff
+
 alias rehash='hash -r'
 alias unmount='echo "Error: Try the command: umount" 1>&2; false'
 alias you='if test "$EUID" = 0 ; then /sbin/yast2 online_update ; else su - -c "/sbin/yast2 online_update" ; fi'
+
+# editing/reloading bash configs
+alias editBash="vim -e ~/.bash_profile"
+alias reloadBash="source ~/.bash_profile"
+alias editBashPrompt="vim -e ~/.bash_prompt"
+alias reloadBashPrompt="source ~/.bash_prompt"
+alias editBashRc="vim -e ~/.bashrc"
+alias reloadBashRc="source ~/.bashrc"
 
 # alias for the use of GIT
 #s="git status -s"
@@ -102,7 +119,6 @@ alias you='if test "$EUID" = 0 ; then /sbin/yast2 online_update ; else su - -c "
 #cam=commit -a -m
 #m=commit --amend --verbose
 #
-alias d=diff
 #ds=diff --stat
 #dc=diff --cached
 #
@@ -110,6 +126,18 @@ alias d=diff
 #
 #co=checkout
 #cob=checkout -b
+
+# git commands
+alias ga="git add -A"
+alias gb="git branch"
+alias gc="git commit -m"
+alias gcp="git cherry-pick"
+alias gd="git diff"
+alias go="git checkout"
+alias gl="git log --graph --all"
+alias gp="git push"
+alias gs="git status"
+
 #alias in form of functions
 mcd() { mkdir -p "$1"; cd "$1";}  #Make a directory and cd into it in one command: mcd name
 cls() { cd "$1"; ls;}  #cd into a directory and list its content: cls name.
@@ -117,7 +145,7 @@ cls() { cd "$1"; ls;}  #cd into a directory and list its content: cls name.
 #make command line smaller:
 #if [ "$color_prompt" = yes ]; then
 #    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ '
-#else
+#ese
 #    PS1='${debian_chroot:+($debian_chroot)}\u:\W\$ '
 #fi
 #or
