@@ -65,6 +65,7 @@ alias fgrep='fgrep --color=auto'
 alias gm='gvim'
 alias gr='gvim -R'
 alias vd='vimdiff'
+alias gvd='gvimdiff'
 
 alias acr='acroread' 
 alias mkr='mkdir'  
@@ -81,7 +82,6 @@ alias mv='mv -i'  #ask for confirmation if overwriting'
 alias cp='cp -i' 
 alias ln='ln -i'
 
-<<<<<<< HEAD
 # dir navigation
 alias ~="cd ~" 
 alias cdd="cd ~/Desktop"
@@ -92,8 +92,6 @@ alias .2='cd ../../'
 alias .3='cd ../../../'
 alias .4='cd ../../../../'
 alias .5='cd ../../../../../'
-alias ..='cd ..'
-alias ...='cd ../..'
 alias c="clear"
 
 alias d=diff
