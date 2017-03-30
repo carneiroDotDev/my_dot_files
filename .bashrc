@@ -59,6 +59,10 @@ alias lt='ls -t --color=auto'
 alias ln='ln -i'
 alias l.='ls -d .* --color=auto'
 
+#This is important because, as I use a lot the alias gm, I may do a typo
+#and delete some important file.
+alias rm='rm -iv'
+
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
