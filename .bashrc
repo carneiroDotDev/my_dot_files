@@ -63,6 +63,7 @@ alias l.='ls -d .* --color=auto'
 #and delete some important file.
 alias rm='rm -iv'
 
+alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
