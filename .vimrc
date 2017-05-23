@@ -46,8 +46,28 @@
  
 " Set 'nocompatible' to ward off unexpected things that your distro might
 " have made, as well as sanely reset options when re-sourcing .vimrc
-"set nocompatible
+set nocompatible
  
+"This will call Vundle which is the best VIM plugin manager
+"Vundle requires filetype to be off initially, but once you’re finished 
+"adding Bundles, you can set it to be on again.
+filetype off
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim/
+
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+" call vundle#begin('~/some/path/here')
+
+"This will let Vundle manage Vundle (Its necessary)
+Plugin 'VundleVim/Vundle.vim'
+"The emmet plugin to make faster HTML/CSS typing
+Plugin 'mattn/emmet-vim'
+
+" All of your Plugins must be added before the following line
+call vundle#end()
+
+
 " Attempt to determine the type of a file based on its name and possibly its
 " contents. Use this to allow intelligent auto-indenting for each filetype,
 " and for plugins that are filetype specific.
@@ -55,6 +75,9 @@ filetype indent plugin on
  
 " Enable syntax highlighting
 syntax on
+
+" It will call the pathigen.vim, which is a plugin 
+" to make easier the instalation of other plugins.
 
 "------------------------------------------------------------
 " Must have options {{{1
@@ -199,4 +222,21 @@ map Y y$
 " next search
 nnoremap <C-L> :nohl<CR><C-L>
  
+"------------------------------------------------------------
+" Functions 
+"
+autocmd BufNewFile  *.html  call    Generate_html()
+
+function! Generate_html()
+    call append(0, "<!DOCTYPE HTML>")
+    call append(1, "<html><head>")
+    call append(2, "    <title></title>")
+    call append(3, '    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />')
+    call append(4, '    <style type="text/css">')
+    call append(5, '    </style>')
+    call append(6, '</head>')
+    call append(7, '<body>')
+    call append(8, '</body>')
+    call append(9, '</html>')
+endfunction
 "------------------------------------------------------------
