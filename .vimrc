@@ -6,7 +6,7 @@
 " Description: I have developed my .vimrc file upon the one described below. 
 "           1) The relative line number is set together with the number of the 
 "              actual line. (set rnu nu)
-"           2) I always use set nocompatible for safety reasons. It follows a 
+"           2) I always use set noncompatible for safety reasons. It follows a 
 "              a chunck of the vi compatible-default documentation:
 "             -- When Vim starts, the 'compatible' option is on. This will be used 
 "              when Vim starts its initializations. But as soon as a user vimrc 
@@ -29,6 +29,11 @@
 "              column where we can go to. Also to wrap the line is an option. I will think
 "              about that for a next version (I dont like that colorful stripe when 
 "              highlighting a column).
+"           7) In case of vimdiff, show the whole file. It includes the lines which are
+"              identical in both files. 
+              if &diff                             " only for diff mode/vimdiff
+              set diffopt=filler,context:1000000   " filler is default and inserts empty lines for sync
+              endif
 "
 " Version 1.0:
 " URL: http://vim.wikia.com/wiki/Example_vimrc
@@ -63,6 +68,12 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 "The emmet plugin to make faster HTML/CSS typing
 Plugin 'mattn/emmet-vim'
+"The Solorized colorscheme
+"Plugin 'altercation/vim-colors-solarized'
+"The vim-airline status bar
+Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'  "modify the theme (the normal one looks bad)
+"see https://github.com/vim-airline/vim-airline/wiki/Screenshots for all the themes
 
 " All of your Plugins must be added before the following line
 call vundle#end()
@@ -73,11 +84,36 @@ call vundle#end()
 " and for plugins that are filetype specific.
 filetype indent plugin on
  
-" Enable syntax highlighting
-syntax on
+"The difference btw syntax on and syntax enable described by the 
+"VIM Helper:
+"The ":syntax enable" command will keep your current color settings.  This
+"allows using ":highlight" commands to set your preferred colors before or
+"after using this command.  If you want Vim to overrule your settings with the
+"defaults, use: >
+"    :syntax on
+if !exists("g:syntax_on")
+    syntax enable
+endif
 
-" It will call the pathigen.vim, which is a plugin 
-" to make easier the instalation of other plugins.
+"Turn on the solorized colorscheme
+"set background=light
+"colorscheme solarized
+"There is also a darker look for the colorscheme
+"set background=dark
+"colorscheme solarized
+
+"This will differenciate the colorscheme look depending 
+"if onw is using the GUI version or the terminal version of VI:
+"if has('gui_running')
+"    set background=light
+"else
+"    set background=dark
+"endif
+"
+"Let the vim-airline customize the tabs:
+let g:airline#extensions#tabline#enabled = 1
+"set the theme for vim-airline
+let g:airline_theme='papercolor'
 
 "------------------------------------------------------------
 " Must have options {{{1
@@ -122,6 +158,9 @@ set hlsearch
 " script, <http://www.vim.org/scripts/script.php?script_id=1876>.
 " set nomodeline
  
+"Vim will look when initializing also for a possible .vimrc/.exrc in the local 
+"folder besides the ~/.vimrc to initialize with options.
+set exrc
  
 "------------------------------------------------------------
 " Usability options {{{1
@@ -221,7 +260,58 @@ map Y y$
 " Map <C-L> (redraw screen) to also turn off search highlighting until the
 " next search
 nnoremap <C-L> :nohl<CR><C-L>
- 
+
+"set list
+"set listchars=tab:>-    "Two characters to be used to show a tab.  The first
+                        "char is used once.  The second char is repeated to
+                        "fill the space that the tab normally occupies.
+                        ""tab:>-" will show a tab that takes four spaces as
+                        "">---".  When omitted, a tab is show as ^I.
+"set listchars=eol:$     Show end of lines as $"
+
+"------Appendix 1  - Using VIM for writing plain text--------
+"
+"I this section I will write a function which should be called 
+"when plain text will be written. This will set some useful options 
+"to make writing (and not coding) in VIM more pleasurable.
+"
+func! VimToWriteMode() 
+    "At first I will let saved here some welcome commands, just so:
+
+"   3diw   —delete inside the current word and the next two words
+"   dwwP   —swap the current word with the next word
+"   d?foo  —delete from the cursor to the previous string “foo”
+"   ct.    —change from the cursor until the next period
+"   d^     —delete from the cursor to the beginning of the line
+"   d>D    —delete from the cursor to the end of the line
+"   2J     —join the current line with the line below
+"   das    —delete around the current sentence
+"   c(     —change from the cursor to the beginning of a sentence
+"   >}     —go to the end of the current paragraph
+"   dapP   —swap current paragraph with the next paragraph
+
+
+"I will not wrap the text until some column, because it always 
+"somehow appears the wish to make a really long line or comment.
+"I will simply highlight a column with a nice soft color (pinkish)
+"to have an idea when the text is going too far.
+set colorcolumn=85
+"Maybe you want another color? 
+highlight ColorColumn ctermbg=0 guibg=lightred
+"
+" setlocal formatoptions=1 
+" setlocal noexpandtab 
+" map j gj 
+" map k gk
+" setlocal spell spelllang=en_us 
+" set nospell  " just to remember
+" set thesaurus+=/Users/sbrown/.vim/thesaurus/mthesaur.txt
+" set complete+=s
+" set formatprg=par
+" setlocal wrap 
+" setlocal linebreak 
+endfu 
+com! VW call VimToWriteMode()
 "------------------------------------------------------------
 " Functions 
 "
