@@ -135,15 +135,17 @@ alias reloadBashRc="source ~/.bashrc"
 # git commands
 alias ga="git add -A"
 alias gb="git branch"
-alias gc="git commit -m"
+alias gc="git commit"
+alias gcm="git commit -m"
 alias gcp="git cherry-pick"
 alias gd="git diff"
+alias gdt="git difftool --tool=gvimdiff"
 alias go="git checkout"
 alias gl="git log --graph --all"
 alias gpl="git pull"
 alias gps="git push"
-alias gs="git status"
-alias gss="git status --short"
+alias gss="git status"
+alias gs="git status --short"
 
 #alias in form of functions
 mcd() { mkdir -p "$1"; cd "$1";}  #Make a directory and cd into it in one command: mcd name
