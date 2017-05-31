@@ -29,8 +29,8 @@ export EDITOR=/usr/bin/vim
 test -s ~/.alias && . ~/.alias || true
 
 #To be sure which fortran compiler is presently loaded.
-module unload fortran
-module load fortran/intel/15.0
+#module unload intel
+module load intel/15.0
 ifort -v
 
 #Typical directory that I have recently worked
@@ -63,7 +63,6 @@ alias l.='ls -d .* --color=auto'
 #and delete some important file.
 alias rm='rm -iv'
 
-alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
@@ -141,8 +140,10 @@ alias gcp="git cherry-pick"
 alias gd="git diff"
 alias go="git checkout"
 alias gl="git log --graph --all"
-alias gp="git push"
+alias gpl="git pull"
+alias gps="git push"
 alias gs="git status"
+alias gss="git status --short"
 
 #alias in form of functions
 mcd() { mkdir -p "$1"; cd "$1";}  #Make a directory and cd into it in one command: mcd name
