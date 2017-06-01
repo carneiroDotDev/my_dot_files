@@ -137,6 +137,7 @@ alias ga="git add -A"
 alias gb="git branch"
 alias gc="git commit"
 alias gcm="git commit -m"
+alias gcam="git commit -a -m"
 alias gcp="git cherry-pick"
 alias gd="git diff"
 alias gdt="git difftool --tool=gvimdiff"
@@ -146,6 +147,8 @@ alias gpl="git pull"
 alias gps="git push"
 alias gss="git status"
 alias gs="git status --short"
+alias glpf="git log --pretty=format:'%h - %an, %ar : %s'"
+# git config --global core.editor --> To set the editor = $EDITOR
 
 #alias in form of functions
 mcd() { mkdir -p "$1"; cd "$1";}  #Make a directory and cd into it in one command: mcd name

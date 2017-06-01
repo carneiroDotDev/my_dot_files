@@ -161,6 +161,9 @@ set hlsearch
 "Vim will look when initializing also for a possible .vimrc/.exrc in the local 
 "folder besides the ~/.vimrc to initialize with options.
 set exrc
+
+"Spellcheck 
+set spell spelllang=en_us
  
 "------------------------------------------------------------
 " Usability options {{{1
@@ -328,5 +331,21 @@ function! Generate_html()
     call append(7, '<body>')
     call append(8, '</body>')
     call append(9, '</html>')
+endfunction
+
+autocmd BufNewFile  *.pro  call    Generate_idl()
+
+function! Generate_idl()
+    call append(0, "pro")
+    call append(1, "loadct,12")
+    call append(3, "return")
+    call append(4, "end")
+endfunction
+
+autocmd BufNewFile  *.sh  call    Generate_sh()
+
+function! Generate_sh()
+    call append(0, "#!/bin/bash")
+    call append(1, "#")
 endfunction
 "------------------------------------------------------------
