@@ -30,8 +30,8 @@ test -s ~/.alias && . ~/.alias || true
 
 #To be sure which fortran compiler is presently loaded.
 #module unload intel
-module load intel/15.0
-ifort -v
+#module load intel/15.0
+#ifort -v
 
 #Typical directory that I have recently worked
 alias carbon='cd ~/Documents/Doktor/carbon/spectra_analysis/models'
@@ -54,17 +54,18 @@ alias beep='echo -en "\007"'
 
 alias l='ls -alF'
 alias la='ls -la'
-alias ll='ls -l --color=auto'
-alias lt='ls -t --color=auto'
+alias ll='ls -l '
+alias lt='ls -t'
 alias ln='ln -i'
-alias l.='ls -d .* --color=auto'
+alias l.='ls -d .* '
 
 #This is important because, as I use a lot the alias gm, I may do a typo
 #and delete some important file.
 alias rm='rm -iv'
 
-alias egrep='egrep --color=auto'
-alias fgrep='fgrep --color=auto'
+alias grep='grep --color=always'
+alias egrep='egrep --color=always'
+alias fgrep='fgrep --color=always'
 
 alias gm='gvim'
 alias gr='gvim -R'
@@ -132,6 +133,9 @@ alias reloadBashRc="source ~/.bashrc"
 #co=checkout
 #cob=checkout -b
 
+source ~/git-prompt.sh
+export GIT_PS1_SHOWDIRTYSTATE=1
+
 # git commands
 alias ga="git add -A"
 alias gb="git branch"
@@ -153,6 +157,13 @@ alias glpf="git log --pretty=format:'%h - %an, %ar : %s'"
 #alias in form of functions
 mcd() { mkdir -p "$1"; cd "$1";}  #Make a directory and cd into it in one command: mcd name
 cls() { cd "$1"; ls;}  #cd into a directory and list its content: cls name.
+chrome () {
+    /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome
+  }
+
+# Change command prompt
+source ~/git-prompt.sh
+export GIT_PS1_SHOWDIRTYSTATE=1
 
 #make command line smaller:
 #if [ "$color_prompt" = yes ]; then
@@ -162,7 +173,13 @@ cls() { cd "$1"; ls;}  #cd into a directory and list its content: cls name.
 #fi
 #or
 #export PS1='$(whoami):${PWD/*\//}> '
-export PS1='\[\033[0;36m\]\A\[\033[1;30m\] $(whoami):${PWD/*\//}> '
+#export PS1='\[\033[0;36m\]\A\[\033[1;30m\] $(whoami):${PWD/*\//}> '
+green="\[\033[0;32m\]"
+red="\[\033[0;36m\]"
+black="\[\033[1;30m\]"
+reset="\[\033[0m\]"
+blue="\[\033[0;34m\]"
+export PS1='\[\033[0;36m\]\A\[\033[1;30m\] $(whoami)\[\033[0;32m\]$(__git_ps1)\[\033[1;30m\]:${PWD/*\//}> '
 #export PS1='$(whoami)@\h:${PWD/*\//}> '
 #This last one is really complex and Ive set just for educacional propose (an example):
 #export PS1="\[\033[s\033[0;0H\033[0;41m\033[K\033[1;33m\t\033[0m\033[u\]<\u@\h \W>\$ "
@@ -171,3 +188,8 @@ export PS1='\[\033[0;36m\]\A\[\033[1;30m\] $(whoami):${PWD/*\//}> '
 # history size to 1000 lines
 export HISTCONTROL=ignoredups
 export HISTSIZE=1000
+
+#Note if this is not set in the .gitconfig
+#git config --global push.default upstream
+#git config --global merge.conflictstyle diff3
+#git log --graph --oneline master branch 

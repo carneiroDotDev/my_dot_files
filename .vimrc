@@ -48,6 +48,10 @@
 "
 " These options and commands enable some very useful features in Vim, that
 " no user should have to live without.
+
+" Use 256 colors in vim
+" some plugins not work without it
+set t_Co=256
  
 " Set 'nocompatible' to ward off unexpected things that your distro might
 " have made, as well as sanely reset options when re-sourcing .vimrc
@@ -69,23 +73,26 @@ Plugin 'VundleVim/Vundle.vim'
 "The emmet plugin to make faster HTML/CSS typing
 Plugin 'mattn/emmet-vim'
 "The Solorized colorscheme
-"Plugin 'altercation/vim-colors-solarized'
+Plugin 'altercation/vim-colors-solarized'
 "The vim-airline status bar
 Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'  "modify the theme (the normal one looks bad)
 "see https://github.com/vim-airline/vim-airline/wiki/Screenshots for all the themes
+"
+" Great file system explorer, it appears when you open dir in vim
+" Allow modification of dir, and may other things
+" Must have
+Plugin 'scrooloose/nerdtree'
 
 " All of your Plugins must be added before the following line
 call vundle#end()
-
 
 " Attempt to determine the type of a file based on its name and possibly its
 " contents. Use this to allow intelligent auto-indenting for each filetype,
 " and for plugins that are filetype specific.
 filetype indent plugin on
  
-"The difference btw syntax on and syntax enable described by the 
-"VIM Helper:
+"The difference btw syntax on and syntax enable described by the VIM Helper:
 "The ":syntax enable" command will keep your current color settings.  This
 "allows using ":highlight" commands to set your preferred colors before or
 "after using this command.  If you want Vim to overrule your settings with the
@@ -95,9 +102,10 @@ if !exists("g:syntax_on")
     syntax enable
 endif
 
+
 "Turn on the solorized colorscheme
-"set background=light
-"colorscheme solarized
+set background=light
+colorscheme solarized
 "There is also a darker look for the colorscheme
 "set background=dark
 "colorscheme solarized
@@ -162,7 +170,9 @@ set hlsearch
 "folder besides the ~/.vimrc to initialize with options.
 set exrc
 
-"Spellcheck 
+"I needed to change the font mainly because of Macvim:
+"set guifont=Menlo:h14
+set guifont=Monaco:h14
 set spell spelllang=en_us
  
 "------------------------------------------------------------
@@ -256,6 +266,9 @@ set expandtab
 "
 " Useful mappings
  
+" Give a shortcut key to NERD Tree
+map <F2> :NERDTreeToggle<CR>
+
 " Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
 " which is the default
 map Y y$
@@ -263,6 +276,10 @@ map Y y$
 " Map <C-L> (redraw screen) to also turn off search highlighting until the
 " next search
 nnoremap <C-L> :nohl<CR><C-L>
+
+map  <C-l> :tabn<CR>    "Move to next tab
+map  <C-h> :tabp<CR>    "Move to previous tab
+map  <C-n> :tabnew<CR>  "Create new tab
 
 "set list
 "set listchars=tab:>-    "Two characters to be used to show a tab.  The first
@@ -318,6 +335,18 @@ com! VW call VimToWriteMode()
 "------------------------------------------------------------
 " Functions 
 "
+"Open a NERDTree automatically when vim starts up if no files were specified
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+"Show hidden files in NerdTree
+let NERDTreeShowHidden=1
+
+"autopen NERDTree and focus cursor in new document
+"autocmd VimEnter * NERDTree
+"autocmd VimEnter * wincmd p
+
+"Create HTML basic tags when vim is called with a file *.html
 autocmd BufNewFile  *.html  call    Generate_html()
 
 function! Generate_html()
@@ -349,3 +378,14 @@ function! Generate_sh()
     call append(1, "#")
 endfunction
 "------------------------------------------------------------
+" Folding
+
+" Enable syntax folding in javascript
+let javaScript_fold=1
+
+" No fold closed at open file
+set foldlevelstart=99
+set nofoldenable
+
+" Keymap to toggle folds with space
+nmap <space> za
