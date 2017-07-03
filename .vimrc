@@ -266,6 +266,11 @@ set expandtab
 "
 " Useful mappings
  
+" Vim as default maps help as F1. I will substitute this mapping for <ESC>,
+" because sometimes I want to exit the insert mode and I type F1 instead of ESC.
+map <F1> <ESC>
+imap <F1> <ESC>
+
 " Give a shortcut key to NERD Tree
 map <F2> :NERDTreeToggle<CR>
 
@@ -275,7 +280,7 @@ map Y y$
  
 " Map <C-L> (redraw screen) to also turn off search highlighting until the
 " next search
-nnoremap <C-L> :nohl<CR><C-L>
+"nnoremap <C-L> :nohl<CR><C-L>
 
 map  <C-l> :tabn<CR>    "Move to next tab
 map  <C-h> :tabp<CR>    "Move to previous tab
@@ -288,6 +293,28 @@ map  <C-n> :tabnew<CR>  "Create new tab
                         ""tab:>-" will show a tab that takes four spaces as
                         "">---".  When omitted, a tab is show as ^I.
 "set listchars=eol:$     Show end of lines as $"
+
+" HTML maping 
+imap <A-p> <p class="">
+imap <S-A-p> </p>
+
+imap <A-d> <div class="">
+imap <S-A-d> </div>
+
+imap <A-a> <a calss="" href="">
+imap <S-A-a> </a>
+
+imap <S-A-i> <img src="" alt="">
+
+imap <A-h> <h1>
+imap <S-A-h> </h1>
+
+ab lorem1 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. 
+ab lorem2 Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. 
+ab lorem3 Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. 
+ab lorem4 Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. 
+ab lorem5 Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. 
+ab lorem6 Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,
 
 "------Appendix 1  - Using VIM for writing plain text--------
 "
@@ -354,12 +381,13 @@ function! Generate_html()
     call append(1, "<html><head>")
     call append(2, "    <title></title>")
     call append(3, '    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />')
-    call append(4, '    <style type="text/css">')
-    call append(5, '    </style>')
-    call append(6, '</head>')
-    call append(7, '<body>')
-    call append(8, '</body>')
-    call append(9, '</html>')
+    call append(4,'<!-- <link rel="stylesheet" href="" /> -->')
+    call append(5, '    <style type="text/css">')
+    call append(6, '    </style>')
+    call append(7, '</head>')
+    call append(8, '<body>')
+    call append(9, '</body>')
+    call append(10, '</html>')
 endfunction
 
 autocmd BufNewFile  *.pro  call    Generate_idl()
@@ -388,4 +416,4 @@ set foldlevelstart=99
 set nofoldenable
 
 " Keymap to toggle folds with space
-nmap <space> za
+"nmap <space> za
