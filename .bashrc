@@ -146,13 +146,15 @@ alias gchk="git checkout"
 alias gcp="git cherry-pick"
 alias gd="git diff"
 alias gdt="git difftool --tool=gvimdiff"
-#alias go="git checkout"
+alias go="git checkout"
 alias gl="git log --graph --all"
 alias gpl="git pull"
 alias gps="git push"
 alias gss="git status"
 alias gs="git status --short"
 alias glpf="git log --pretty=format:'%h - %an, %ar : %s'"
+alias grv="git remote -v"
+alias grau="git remote add upstream "  #This alias requests the link of the original repo after it
 # git config --global core.editor --> To set the editor = $EDITOR
 
 #alias in form of functions
