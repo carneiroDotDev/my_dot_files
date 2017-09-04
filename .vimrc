@@ -73,7 +73,7 @@ Plugin 'VundleVim/Vundle.vim'
 "The emmet plugin to make faster HTML/CSS typing
 Plugin 'mattn/emmet-vim'
 "The Solorized colorscheme
-Plugin 'altercation/vim-colors-solarized'
+"Plugin 'altercation/vim-colors-solarized'
 "The vim-airline status bar
 Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'  "modify the theme (the normal one looks bad)
@@ -104,8 +104,8 @@ endif
 
 
 "Turn on the solorized colorscheme
-set background=light
-colorscheme solarized
+"set background=light
+"colorscheme solarized
 "There is also a darker look for the colorscheme
 "set background=dark
 "colorscheme solarized
@@ -172,7 +172,7 @@ set exrc
 
 "I needed to change the font mainly because of Macvim:
 "set guifont=Menlo:h14
-set guifont=Monaco:h14
+"set guifont=Monaco:h14
 set spell spelllang=en_us
  
 "------------------------------------------------------------
@@ -280,7 +280,7 @@ map Y y$
  
 " Map <C-L> (redraw screen) to also turn off search highlighting until the
 " next search
-"nnoremap <C-L> :nohl<CR><C-L>
+" nnoremap <C-L> :nohl<CR><C-L>
 
 map  <C-l> :tabn<CR>    "Move to next tab
 map  <C-h> :tabp<CR>    "Move to previous tab
@@ -377,15 +377,16 @@ let NERDTreeShowHidden=1
 autocmd BufNewFile  *.html  call    Generate_html()
 
 function! Generate_html()
-    call append(0, "<!DOCTYPE HTML>")
-    call append(1, "<html><head>")
-    call append(2, "    <title></title>")
+    call append(0, '<!DOCTYPE HTML>')
+    call append(1, '<html><head>')
+    call append(2, '    <title></title>')
     call append(3, '    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />')
-    call append(4,'<!-- <link rel="stylesheet" href="" /> -->')
-    call append(5, '    <style type="text/css">')
-    call append(6, '    </style>')
+    call append(4,' <link rel="stylesheet" href="" />')
+    call append(5, '<!-- <style type="text/css">-->')
+    call append(6, '<!-- </style> -->')
     call append(7, '</head>')
     call append(8, '<body>')
+    call append(9, '<script src="js/script.js"></script>')
     call append(9, '</body>')
     call append(10, '</html>')
 endfunction
@@ -416,4 +417,4 @@ set foldlevelstart=99
 set nofoldenable
 
 " Keymap to toggle folds with space
-"nmap <space> za
+" nmap <space> za
