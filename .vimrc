@@ -60,37 +60,44 @@ set nocompatible
 "This will call Vundle which is the best VIM plugin manager
 "Vundle requires filetype to be off initially, but once you’re finished 
 "adding Bundles, you can set it to be on again.
-filetype off
+" filetype off R.I.P Vundle 15/10/2017
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim/
+" set rtp+=~/.vim/bundle/Vundle.vim/  R.I.P Vundle 15/10/2017 (vim-pug handles it) 
 
-call vundle#begin()
+" call vundle#begin()   R.I.P Vundle 15/10/2017 (vim-pug handles it) 
+call plug#begin('~/.vim/plugged')
+" :PlugnInstall
+
 " alternatively, pass a path where Vundle should install plugins
 " call vundle#begin('~/some/path/here')
 
 "This will let Vundle manage Vundle (Its necessary)
-Plugin 'VundleVim/Vundle.vim'
+"  Plugin 'VundleVim/Vundle.vim' R.I.P Vundle 15/10/2017 (vim-pug handles it) 
 "The emmet plugin to make faster HTML/CSS typing
-Plugin 'mattn/emmet-vim'
+Plug 'mattn/emmet-vim'
 "The Solorized colorscheme
-"Plugin 'altercation/vim-colors-solarized'
+"Plug 'altercation/vim-colors-solarized'
 "The vim-airline status bar
-Plugin 'bling/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'  "modify the theme (the normal one looks bad)
+Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'  "modify the theme (the normal one looks bad)
 "see https://github.com/vim-airline/vim-airline/wiki/Screenshots for all the themes
+"
+"Vim Surround plug in. (Ex. cs" ' or cst") 
+Plug 'tpope/vim-surround'
 "
 " Great file system explorer, it appears when you open dir in vim
 " Allow modification of dir, and may other things
 " Must have
-Plugin 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 
 " All of your Plugins must be added before the following line
-call vundle#end()
+" call vundle#end()  R.I.P Vundle 15/10/2017 (vim-pug handles it) 
+call plug#end()
 
 " Attempt to determine the type of a file based on its name and possibly its
 " contents. Use this to allow intelligent auto-indenting for each filetype,
 " and for plugins that are filetype specific.
-filetype indent plugin on
+" filetype indent plugin on R.I.P Vundle 15/10/2017 (vim-pug handles it) 
  
 "The difference btw syntax on and syntax enable described by the VIM Helper:
 "The ":syntax enable" command will keep your current color settings.  This
@@ -98,17 +105,17 @@ filetype indent plugin on
 "after using this command.  If you want Vim to overrule your settings with the
 "defaults, use: >
 "    :syntax on
-if !exists("g:syntax_on")
-    syntax enable
-endif
+"if !exists("g:syntax_on")
+"    syntax enable         R.I.P Vundle 15/10/2017 (vim-pug handles it) 
+"endif
 
 
 "Turn on the solorized colorscheme
-"set background=light
-"colorscheme solarized
+" set background=light
+" colorscheme solarized
 "There is also a darker look for the colorscheme
-"set background=dark
-"colorscheme solarized
+" set background=dark
+" colorscheme solarized
 
 "This will differenciate the colorscheme look depending 
 "if onw is using the GUI version or the terminal version of VI:
@@ -342,7 +349,7 @@ func! VimToWriteMode()
 "somehow appears the wish to make a really long line or comment.
 "I will simply highlight a column with a nice soft color (pinkish)
 "to have an idea when the text is going too far.
-set colorcolumn=85
+set colorcolumn=75
 "Maybe you want another color? 
 highlight ColorColumn ctermbg=0 guibg=lightred
 "
