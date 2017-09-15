@@ -85,6 +85,21 @@ Plug 'vim-airline/vim-airline-themes'  "modify the theme (the normal one looks b
 "Vim Surround plug in. (Ex. cs" ' or cst") 
 Plug 'tpope/vim-surround'
 "
+"Javascript syntax highlight
+Plug 'jelera/vim-javascript-syntax'
+"
+"Syntastic Plugin 
+Plug 'scrooloose/syntastic'
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_html_checkers = ['HTML']
+"
 " Great file system explorer, it appears when you open dir in vim
 " Allow modification of dir, and may other things
 " Must have
