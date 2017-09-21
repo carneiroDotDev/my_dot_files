@@ -328,8 +328,8 @@ imap <S-A-a> </a>
 
 imap <S-A-i> <img src="" alt="">
 
-imap <A-h> <h1>
-imap <S-A-h> </h1>
+imap <A-t> <h1>
+imap <S-A-t> </h1>
 
 ab lorem1 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. 
 ab lorem2 Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. 
@@ -404,15 +404,18 @@ function! Generate_html()
     call append(2, '<head>')
     call append(3, '   <title></title>')
     call append(4, '   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />')
-    call append(5, '   <link rel="stylesheet" href="" />')
-    call append(6, '   <!-- <style type="text/css">-->')
-    call append(7, '   <!-- </style> -->')
-    call append(8, '</head>')
-    call append(9, '<body>')
-    call append(10, ' ')
-    call append(11, '   <script src="js/script.js"></script>')
-    call append(12,'</body>')
-    call append(13,'</html>')
+    call append(5, '   <meta http-equiv="X-UA-Compatible" content="IE=edge">')
+    call append(6, '   <meta name="viewport" content="width=device-width, initial-scale=1">')
+    call append(7,'')
+    call append(8, '   <link rel="stylesheet" href="" />')
+    call append(9, '   <!-- <style type="text/css">-->')
+    call append(10, '   <!-- </style> -->')
+    call append(11, '</head>')
+    call append(12, '<body>')
+    call append(13, ' ')
+    call append(14, '   <script src="js/script.js"></script>')
+    call append(15,'</body>')
+    call append(16,'</html>')
 endfunction
 
 autocmd BufNewFile  *.pro  call    Generate_idl()
