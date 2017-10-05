@@ -60,37 +60,59 @@ set nocompatible
 "This will call Vundle which is the best VIM plugin manager
 "Vundle requires filetype to be off initially, but once you’re finished 
 "adding Bundles, you can set it to be on again.
-filetype off
+" filetype off R.I.P Vundle 15/10/2017
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim/
+" set rtp+=~/.vim/bundle/Vundle.vim/  R.I.P Vundle 15/10/2017 (vim-pug handles it) 
 
-call vundle#begin()
+" call vundle#begin()   R.I.P Vundle 15/10/2017 (vim-pug handles it) 
+call plug#begin('~/.vim/plugged')
+" :PlugnInstall
+
 " alternatively, pass a path where Vundle should install plugins
 " call vundle#begin('~/some/path/here')
 
 "This will let Vundle manage Vundle (Its necessary)
-Plugin 'VundleVim/Vundle.vim'
+"  Plugin 'VundleVim/Vundle.vim' R.I.P Vundle 15/10/2017 (vim-pug handles it) 
 "The emmet plugin to make faster HTML/CSS typing
-Plugin 'mattn/emmet-vim'
+Plug 'mattn/emmet-vim'
 "The Solorized colorscheme
-Plugin 'altercation/vim-colors-solarized'
+"Plug 'altercation/vim-colors-solarized'
 "The vim-airline status bar
-Plugin 'bling/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'  "modify the theme (the normal one looks bad)
+Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'  "modify the theme (the normal one looks bad)
 "see https://github.com/vim-airline/vim-airline/wiki/Screenshots for all the themes
+"
+"Vim Surround plug in. (Ex. cs" ' or cst") 
+Plug 'tpope/vim-surround'
+"
+"Javascript syntax highlight
+Plug 'jelera/vim-javascript-syntax'
+"
+"Syntastic Plugin 
+Plug 'scrooloose/syntastic'
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_html_checkers = ['HTML']
 "
 " Great file system explorer, it appears when you open dir in vim
 " Allow modification of dir, and may other things
 " Must have
-Plugin 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 
 " All of your Plugins must be added before the following line
-call vundle#end()
+" call vundle#end()  R.I.P Vundle 15/10/2017 (vim-pug handles it) 
+call plug#end()
 
 " Attempt to determine the type of a file based on its name and possibly its
 " contents. Use this to allow intelligent auto-indenting for each filetype,
 " and for plugins that are filetype specific.
-filetype indent plugin on
+" filetype indent plugin on R.I.P Vundle 15/10/2017 (vim-pug handles it) 
  
 "The difference btw syntax on and syntax enable described by the VIM Helper:
 "The ":syntax enable" command will keep your current color settings.  This
@@ -98,17 +120,17 @@ filetype indent plugin on
 "after using this command.  If you want Vim to overrule your settings with the
 "defaults, use: >
 "    :syntax on
-if !exists("g:syntax_on")
-    syntax enable
-endif
+"if !exists("g:syntax_on")
+"    syntax enable         R.I.P Vundle 15/10/2017 (vim-pug handles it) 
+"endif
 
 
 "Turn on the solorized colorscheme
-set background=light
-colorscheme solarized
+" set background=light
+" colorscheme solarized
 "There is also a darker look for the colorscheme
-"set background=dark
-"colorscheme solarized
+" set background=dark
+" colorscheme solarized
 
 "This will differenciate the colorscheme look depending 
 "if onw is using the GUI version or the terminal version of VI:
@@ -172,7 +194,7 @@ set exrc
 
 "I needed to change the font mainly because of Macvim:
 "set guifont=Menlo:h14
-set guifont=Monaco:h14
+"set guifont=Monaco:h14
 set spell spelllang=en_us
  
 "------------------------------------------------------------
@@ -266,6 +288,11 @@ set expandtab
 "
 " Useful mappings
  
+" Vim as default maps help as F1. I will substitute this mapping for <ESC>,
+" because sometimes I want to exit the insert mode and I type F1 instead of ESC.
+map <F1> <ESC>
+imap <F1> <ESC>
+
 " Give a shortcut key to NERD Tree
 map <F2> :NERDTreeToggle<CR>
 
@@ -275,7 +302,7 @@ map Y y$
  
 " Map <C-L> (redraw screen) to also turn off search highlighting until the
 " next search
-nnoremap <C-L> :nohl<CR><C-L>
+" nnoremap <C-L> :nohl<CR><C-L>
 
 map  <C-l> :tabn<CR>    "Move to next tab
 map  <C-h> :tabp<CR>    "Move to previous tab
@@ -288,6 +315,28 @@ map  <C-n> :tabnew<CR>  "Create new tab
                         ""tab:>-" will show a tab that takes four spaces as
                         "">---".  When omitted, a tab is show as ^I.
 "set listchars=eol:$     Show end of lines as $"
+
+" HTML maping 
+imap <A-p> <p class="">
+imap <S-A-p> </p>
+
+imap <A-d> <div class="">
+imap <S-A-d> </div>
+
+imap <A-a> <a calss="" href="">
+imap <S-A-a> </a>
+
+imap <S-A-i> <img src="" alt="">
+
+imap <A-t> <h1>
+imap <S-A-t> </h1>
+
+ab lorem1 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. 
+ab lorem2 Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. 
+ab lorem3 Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. 
+ab lorem4 Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. 
+ab lorem5 Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. 
+ab lorem6 Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,
 
 "------Appendix 1  - Using VIM for writing plain text--------
 "
@@ -315,7 +364,7 @@ func! VimToWriteMode()
 "somehow appears the wish to make a really long line or comment.
 "I will simply highlight a column with a nice soft color (pinkish)
 "to have an idea when the text is going too far.
-set colorcolumn=85
+set colorcolumn=75
 "Maybe you want another color? 
 highlight ColorColumn ctermbg=0 guibg=lightred
 "
@@ -350,15 +399,23 @@ let NERDTreeShowHidden=1
 autocmd BufNewFile  *.html  call    Generate_html()
 
 function! Generate_html()
-    call append(0, "<!DOCTYPE HTML>")
-    call append(1, "<html><head>")
-    call append(2, "    <title></title>")
-    call append(3, '    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />')
-    call append(4, '    <link rel="stylesheet" href="">')
-    call append(6, '</head>')
-    call append(7, '<body>')
-    call append(8, '</body>')
-    call append(9, '</html>')
+    call append(0, '<!DOCTYPE HTML>')
+    call append(1, '<html>')
+    call append(2, '<head>')
+    call append(3, '   <title></title>')
+    call append(4, '   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />')
+    call append(5, '   <meta http-equiv="X-UA-Compatible" content="IE=edge">')
+    call append(6, '   <meta name="viewport" content="width=device-width, initial-scale=1">')
+    call append(7,'')
+    call append(8, '   <link rel="stylesheet" href="" />')
+    call append(9, '   <!-- <style type="text/css">-->')
+    call append(10, '   <!-- </style> -->')
+    call append(11, '</head>')
+    call append(12, '<body>')
+    call append(13, ' ')
+    call append(14, '   <script src="js/script.js"></script>')
+    call append(15,'</body>')
+    call append(16,'</html>')
 endfunction
 
 autocmd BufNewFile  *.pro  call    Generate_idl()
@@ -387,4 +444,4 @@ set foldlevelstart=99
 set nofoldenable
 
 " Keymap to toggle folds with space
-nmap <space> za
+" nmap <space> za

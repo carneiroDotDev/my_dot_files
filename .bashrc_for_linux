@@ -30,11 +30,12 @@ test -s ~/.alias && . ~/.alias || true
 
 #To be sure which fortran compiler is presently loaded.
 #module unload intel
-#module load intel/15.0
-#ifort -v
+module load intel/15.0
+ifort -v
 
 #Typical directory that I have recently worked
 alias carbon='cd ~/Documents/Doktor/carbon/spectra_analysis/models'
+alias CNO='cd ~/Documents/Doktor/CNO/evolutinary_tracks/ekstrom12_georgy13/massive_stars'
 crb() { cd ~/Documents/Doktor/carbon/spectra_analysis/models; ls;}
 
 #Startup file to be read when IDL is loaded
@@ -54,18 +55,17 @@ alias beep='echo -en "\007"'
 
 alias l='ls -alF'
 alias la='ls -la'
-alias ll='ls -l '
-alias lt='ls -t'
+alias ll='ls -l --color=auto'
+alias lt='ls -t --color=auto'
 alias ln='ln -i'
-alias l.='ls -d .* '
+alias l.='ls -d .* --color=auto'
 
 #This is important because, as I use a lot the alias gm, I may do a typo
 #and delete some important file.
 alias rm='rm -iv'
 
-alias grep='grep --color=always'
-alias egrep='egrep --color=always'
-alias fgrep='fgrep --color=always'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
 
 alias gm='gvim'
 alias gr='gvim -R'
@@ -135,13 +135,13 @@ alias reloadBashRc="source ~/.bashrc"
 
 source ~/git-prompt.sh
 export GIT_PS1_SHOWDIRTYSTATE=1
-
 # git commands
 alias ga="git add -A"
 alias gb="git branch"
 alias gc="git commit"
 alias gcm="git commit -m"
 alias gcam="git commit -a -m"
+alias gchk="git checkout"
 alias gcp="git cherry-pick"
 alias gd="git diff"
 alias gdt="git difftool --tool=gvimdiff"
@@ -152,6 +152,8 @@ alias gps="git push"
 alias gss="git status"
 alias gs="git status --short"
 alias glpf="git log --pretty=format:'%h - %an, %ar : %s'"
+alias grv="git remote -v"
+alias grau="git remote add upstream "  #This alias requests the link of the original repo after it
 # git config --global core.editor --> To set the editor = $EDITOR
 
 #alias in form of functions
@@ -188,8 +190,3 @@ export PS1='\[\033[0;36m\]\A\[\033[1;30m\] $(whoami)\[\033[0;32m\]$(__git_ps1)\[
 # history size to 1000 lines
 export HISTCONTROL=ignoredups
 export HISTSIZE=1000
-
-#Note if this is not set in the .gitconfig
-#git config --global push.default upstream
-#git config --global merge.conflictstyle diff3
-#git log --graph --oneline master branch 
