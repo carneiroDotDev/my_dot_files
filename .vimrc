@@ -76,7 +76,7 @@ call plug#begin('~/.vim/plugged')
 "The emmet plugin to make faster HTML/CSS typing
 Plug 'mattn/emmet-vim'
 "The Solorized colorscheme
-"Plug 'altercation/vim-colors-solarized'
+Plug 'altercation/vim-colors-solarized'
 "The vim-airline status bar
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'  "modify the theme (the normal one looks bad)
@@ -89,16 +89,21 @@ Plug 'tpope/vim-surround'
 Plug 'jelera/vim-javascript-syntax'
 "
 "Syntastic Plugin 
-Plug 'scrooloose/syntastic'
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_html_checkers = ['HTML']
+"Plug 'scrooloose/syntastic'
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+"
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+"let g:syntastic_html_checkers = ['HTML']
+"
+"
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql','md'] }
 "
 " Great file system explorer, it appears when you open dir in vim
 " Allow modification of dir, and may other things
@@ -126,8 +131,8 @@ call plug#end()
 
 
 "Turn on the solorized colorscheme
-" set background=light
-" colorscheme solarized
+ set background=light
+ colorscheme solarized
 "There is also a darker look for the colorscheme
 " set background=dark
 " colorscheme solarized
@@ -178,7 +183,10 @@ set wildmode=list:longest,full
  
 " Show partial commands in the last line of the screen
 set showcmd
- 
+
+" Highlight the line where the cursor is
+set cursorline
+
 " Highlight searches (use <C-L> to temporarily turn off highlighting; see the
 " mapping of <C-L> below)
 set hlsearch
@@ -196,6 +204,15 @@ set exrc
 "set guifont=Menlo:h14
 "set guifont=Monaco:h14
 set spell spelllang=en_us
+set guifont=Monaco:h14
+"set guifont=Inconsolata\ for\ Powerline:h18
+let g:Powerline_symbols = 'fancy'
+set encoding=utf-8
+set t_Co=256
+set fillchars+=stl:\ ,stlnc:\
+set term=xterm-256color
+set termencoding=utf-8
+set linespace=3
  
 "------------------------------------------------------------
 " Usability options {{{1
@@ -338,6 +355,26 @@ ab lorem4 Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phase
 ab lorem5 Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. 
 ab lorem6 Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,
 
+if has("gui_macvim")
+  " Press Ctrl-Tab to switch between open tabs (like browser tabs) to 
+  " the right side. Ctrl-Shift-Tab goes the other way.
+  noremap <C-Tab> :tabnext<CR>
+  noremap <C-S-Tab> :tabprev<CR>
+
+  " Switch to specific tab numbers with Command-number
+  noremap <D-1> :tabn 1<CR>
+  noremap <D-2> :tabn 2<CR>
+  noremap <D-3> :tabn 3<CR>
+  noremap <D-4> :tabn 4<CR>
+  noremap <D-5> :tabn 5<CR>
+  noremap <D-6> :tabn 6<CR>
+  noremap <D-7> :tabn 7<CR>
+  noremap <D-8> :tabn 8<CR>
+  noremap <D-9> :tabn 9<CR>
+  " Command-0 goes to the last tab
+  noremap <D-0> :tablast<CR>
+endif
+
 "------Appendix 1  - Using VIM for writing plain text--------
 "
 "I this section I will write a function which should be called 
@@ -405,17 +442,21 @@ function! Generate_html()
     call append(3, '   <title></title>')
     call append(4, '   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />')
     call append(5, '   <meta http-equiv="X-UA-Compatible" content="IE=edge">')
-    call append(6, '   <meta name="viewport" content="width=device-width, initial-scale=1">')
+    call append(6, '   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">')
     call append(7,'')
-    call append(8, '   <link rel="stylesheet" href="" />')
-    call append(9, '   <!-- <style type="text/css">-->')
-    call append(10, '   <!-- </style> -->')
-    call append(11, '</head>')
-    call append(12, '<body>')
-    call append(13, ' ')
-    call append(14, '   <script src="js/script.js"></script>')
-    call append(15,'</body>')
-    call append(16,'</html>')
+    call append(8,'    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">')
+    call append(9, '   <link rel="stylesheet" href="" />')
+    call append(10, '   <!-- <style type="text/css">-->')
+    call append(11, '   <!-- </style> -->')
+    call append(12, '</head>')
+    call append(13, '<body>')
+    call append(14, ' <h1 class="title"> Hello World! </h1>')
+    call append(15,'  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>')
+    call append(16,'  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>')
+    call append(17,'  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script> ')
+    call append(18, ' <script src="js/script.js"></script>')
+    call append(19,'</body>')
+    call append(20,'</html>')
 endfunction
 
 autocmd BufNewFile  *.pro  call    Generate_idl()
