@@ -35,14 +35,8 @@
               set diffopt=filler,context:1000000   " filler is default and inserts empty lines for sync
               endif
 "
-" Version 1.0:
+" a first reference to write this file was:
 " URL: http://vim.wikia.com/wiki/Example_vimrc
-" Authors: http://vim.wikia.com/wiki/Vim_on_Freenode
-" Description: A minimal, but feature rich, example .vimrc. If you are a
-"              newbie, basing your first .vimrc on this file is a good choice.
-"              If you're a more advanced user, building your own .vimrc based
-"              on this file is still a good idea.
- 
 "------------------------------------------------------------
 " Features {{{1
 "
@@ -76,7 +70,7 @@ call plug#begin('~/.vim/plugged')
 "The emmet plugin to make faster HTML/CSS typing
 Plug 'mattn/emmet-vim'
 "The Solorized colorscheme
-Plug 'altercation/vim-colors-solarized'
+"Plug 'altercation/vim-colors-solarized'
 "The vim-airline status bar
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'  "modify the theme (the normal one looks bad)
@@ -88,22 +82,24 @@ Plug 'tpope/vim-surround'
 "Javascript syntax highlight
 Plug 'jelera/vim-javascript-syntax'
 "
+" post install (yarn install | npm install) then load plugin only for editing supported files
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql'] }
+"
 "Syntastic Plugin 
 "Plug 'scrooloose/syntastic'
 "set statusline+=%#warningmsg#
 "set statusline+=%{SyntasticStatuslineFlag()}
 "set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_html_checkers = ['HTML']
 "
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
-"let g:syntastic_html_checkers = ['HTML']
 "
-"
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
-  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql','md'] }
 "
 " Great file system explorer, it appears when you open dir in vim
 " Allow modification of dir, and may other things
@@ -131,8 +127,8 @@ call plug#end()
 
 
 "Turn on the solorized colorscheme
- set background=light
- colorscheme solarized
+" set background=light
+" colorscheme solarized
 "There is also a darker look for the colorscheme
 " set background=dark
 " colorscheme solarized
@@ -204,7 +200,7 @@ set exrc
 "set guifont=Menlo:h14
 "set guifont=Monaco:h14
 set spell spelllang=en_us
-set guifont=Monaco:h14
+"set guifont=Monaco:h14
 "set guifont=Inconsolata\ for\ Powerline:h18
 let g:Powerline_symbols = 'fancy'
 set encoding=utf-8
@@ -212,7 +208,7 @@ set t_Co=256
 set fillchars+=stl:\ ,stlnc:\
 set term=xterm-256color
 set termencoding=utf-8
-set linespace=3
+set linespace=1
  
 "------------------------------------------------------------
 " Usability options {{{1
@@ -280,6 +276,12 @@ set number
  
 " Use <F11> to toggle between 'paste' and 'nopaste'
 set pastetoggle=<F11>
+
+" In case you want to justify text, use the command "_j"
+ru macros/justify.vim
+" I particularly prefer to select the lines and use "gw".
+" This will not justify but will insert line breaks and 
+" format the text until a maximum column.
  
  
 "------------------------------------------------------------
@@ -337,6 +339,8 @@ map  <C-n> :tabnew<CR>  "Create new tab
 imap <A-p> <p class="">
 imap <S-A-p> </p>
 
+imap <S-A-c> console.log("");
+
 imap <A-d> <div class="">
 imap <S-A-d> </div>
 
@@ -374,7 +378,6 @@ if has("gui_macvim")
   " Command-0 goes to the last tab
   noremap <D-0> :tablast<CR>
 endif
-
 "------Appendix 1  - Using VIM for writing plain text--------
 "
 "I this section I will write a function which should be called 
