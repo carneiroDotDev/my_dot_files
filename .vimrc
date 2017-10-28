@@ -186,6 +186,8 @@ set cursorline
 " Highlight searches (use <C-L> to temporarily turn off highlighting; see the
 " mapping of <C-L> below)
 set hlsearch
+
+set incsearch " search while typing 
  
 " Modelines have historically been a source of security vulnerabilities. As
 " such, it may be a good idea to disable them and use the securemodelines
@@ -282,6 +284,9 @@ ru macros/justify.vim
 " I particularly prefer to select the lines and use "gw".
 " This will not justify but will insert line breaks and 
 " format the text until a maximum column.
+"
+set lazyredraw   " redraw only when necessary
+set showmatch    "highlight [],{},()
  
  
 "------------------------------------------------------------
@@ -307,6 +312,12 @@ set expandtab
 "
 " Useful mappings
  
+"To highlight the recent inserted text press ``
+nnoremap gV `[v`]
+
+"One can use ESC or the sequence
+inoremap jk <esc>
+
 " Vim as default maps help as F1. I will substitute this mapping for <ESC>,
 " because sometimes I want to exit the insert mode and I type F1 instead of ESC.
 map <F1> <ESC>
@@ -484,8 +495,18 @@ endfunction
 let javaScript_fold=1
 
 " No fold closed at open file
-set foldlevelstart=99
-set nofoldenable
+set foldenable
+
+"Starting fold level when opening a new file
+"if 0, all folds will be closed 
+"if 99, all fold are opened  
+set foldlevelstart=0   
+
+"Folds can be also nested until a max
+set foldnestmax=10
 
 " Keymap to toggle folds with space
-" nmap <space> za
+ nnoremap <space> za
+
+ " Fold in respect to the indent level
+ set foldmethod=indent
