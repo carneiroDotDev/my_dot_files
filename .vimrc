@@ -99,6 +99,11 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_html_checkers = ['HTML']
 "
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+"let g:syntastic_html_checkers = ['HTML']
 "
 "
 " Great file system explorer, it appears when you open dir in vim
@@ -186,7 +191,6 @@ set cursorline
 " Highlight searches (use <C-L> to temporarily turn off highlighting; see the
 " mapping of <C-L> below)
 set hlsearch
-
 set incsearch " search while typing 
  
 " Modelines have historically been a source of security vulnerabilities. As
@@ -389,6 +393,7 @@ if has("gui_macvim")
   " Command-0 goes to the last tab
   noremap <D-0> :tablast<CR>
 endif
+
 "------Appendix 1  - Using VIM for writing plain text--------
 "
 "I this section I will write a function which should be called 
@@ -450,27 +455,38 @@ let NERDTreeShowHidden=1
 autocmd BufNewFile  *.html  call    Generate_html()
 
 function! Generate_html()
-    call append(0, '<!DOCTYPE HTML>')
-    call append(1, '<html>')
-    call append(2, '<head>')
-    call append(3, '   <title></title>')
-    call append(4, '   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />')
-    call append(5, '   <meta http-equiv="X-UA-Compatible" content="IE=edge">')
-    call append(6, '   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">')
+    call append(0,  '<!DOCTYPE HTML>')
+    call append(1,  '<html lang="en">')
+    call append(2,  '<head>')
+    call append(3,  '  <title>Function written in my .vimrc</title>')
+    call append(4,  '  <meta charset="utf-8">')
+    call append(6,  '  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">')
     call append(7,'')
-    call append(8,'    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">')
-    call append(9, '   <link rel="stylesheet" href="" />')
-    call append(10, '   <!-- <style type="text/css">-->')
-    call append(11, '   <!-- </style> -->')
-    call append(12, '</head>')
-    call append(13, '<body>')
-    call append(14, ' <h1 class="title"> Hello World! </h1>')
-    call append(15,'  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>')
-    call append(16,'  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>')
-    call append(17,'  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script> ')
-    call append(18, ' <script src="js/script.js"></script>')
-    call append(19,'</body>')
-    call append(20,'</html>')
+    call append(8,  '       <!-- Bootstrap CDN -->')
+    call append(9,  '  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">-->')
+    call append(10, '       <!-- Bootstrap SASS -->')
+    call append(11, '  <!-- <link rel="stylesheet" href="node_modules/bootstrap/compiler/bootstrap.css"> -->')
+    call append(12, '       <!-- Main stylesheet -->')
+    call append(13, '  <!-- <link rel="stylesheet" href="" />-->')
+    call append(14, '  <!-- <style type="text/css">-->')
+    call append(15, '  <!-- </style> -->')
+    call append(16, '</head>')
+    call append(17, '<body>')
+    call append(18,'   <h1 class="title"> Hello World! </h1>')
+    call append(19,'       <!-- Optional JavaScript -->')
+    call append(20,'       <!-- jQuery first, then Popper.js, then Bootstrap JS -->')
+    call append(21,'   <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>-->')
+    call append(22,'   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>-->')
+    call append(23,'   <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>--> ')
+    call append(24,'       <!-- Optional JavaScript -->')
+    call append(25,'       <!-- jQuery first, then Popper.js, then Bootstrap JS -->')
+    call append(26,'   <!-- <script src="node_modules/jquery/dist/jquery.css"></script>-->')
+    call append(27,'   <!-- <script src="node_modules/popper.js/dist/popper.js"></script>-->')
+    call append(28,'   <!-- <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>-->')
+    call append(29,'       <!-- Main JavaScript -->')
+    call append(30,'   <!-- <script src="js/script.js"></script>-->')
+    call append(31,'</body>')
+    call append(32,'</html>')
 endfunction
 
 autocmd BufNewFile  *.pro  call    Generate_idl()
@@ -500,7 +516,7 @@ set foldenable
 "Starting fold level when opening a new file
 "if 0, all folds will be closed 
 "if 99, all fold are opened  
-set foldlevelstart=0   
+set foldlevelstart=99   
 
 "Folds can be also nested until a max
 set foldnestmax=10
