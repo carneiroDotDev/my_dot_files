@@ -196,3 +196,7 @@ export HISTSIZE=1000
 #git config --global push.default upstream
 #git config --global merge.conflictstyle diff3
 #git log --graph --oneline master branch 
+
+#npm run serve
+#browser-sync start --server --directory --files "**/*" &
+#sass --watch node_modules/bootstrap/scss:node_modules/bootstrap/compiler
