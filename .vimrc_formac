@@ -338,9 +338,12 @@ map Y y$
 " next search
 " nnoremap <C-L> :nohl<CR><C-L>
 
-map  <C-l> :tabn<CR>    "Move to next tab
-map  <C-h> :tabp<CR>    "Move to previous tab
-map  <C-n> :tabnew<CR>  "Create new tab
+map  <C-l> :tabn<CR>    
+"Move to next tab
+map  <C-h> :tabp<CR>    
+"Move to previous tab
+map  <C-n> :tabnew<CR>  
+"Create new tab
 
 "set list
 "set listchars=tab:>-    "Two characters to be used to show a tab.  The first
@@ -480,8 +483,8 @@ function! Generate_html()
     call append(23,'   <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>--> ')
     call append(24,'       <!-- Optional JavaScript -->')
     call append(25,'       <!-- jQuery first, then Popper.js, then Bootstrap JS -->')
-    call append(26,'   <!-- <script src="node_modules/jquery/dist/jquery.css"></script>-->')
-    call append(27,'   <!-- <script src="node_modules/popper.js/dist/popper.js"></script>-->')
+    call append(26,'   <!-- <script src="node_modules/jquery/dist/jquery.js"></script>-->')
+    call append(27,'   <!-- <script src="node_modules/popper.js/dist/umd/popper.js"></script>-->')
     call append(28,'   <!-- <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>-->')
     call append(29,'       <!-- Main JavaScript -->')
     call append(30,'   <!-- <script src="js/script.js"></script>-->')
@@ -506,22 +509,23 @@ function! Generate_sh()
 endfunction
 "------------------------------------------------------------
 " Folding
-" Enable syntax folding in javascript
+"" Enable syntax folding in javascript
 let javaScript_fold=1
-
-" No fold closed at open file
+"
+"" No fold closed at open file
 set foldenable
-
-"Starting fold level when opening a new file
-"if 0, all folds will be closed 
-"if 99, all fold are opened  
-set foldlevelstart=99
-
-"Folds can be also nested until a max
-set foldnestmax=10
-
-" Keymap to toggle folds with space
- nnoremap <space> za
-
- " Fold in respect to the indent level
+"
+" Fold in respect to the indent level
  set foldmethod=indent
+
+""Starting fold level when opening a new file
+""if 0, all folds will be closed 
+""if 99, all fold are opened  
+set foldlevelstart=0
+"
+""Folds can be also nested until a max
+"set foldnestmax=10
+"
+"" Keymap to toggle folds with space
+ nnoremap <space> za
+"
