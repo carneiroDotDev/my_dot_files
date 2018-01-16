@@ -35,7 +35,7 @@ ifort -v
 
 #Typical directory that I have recently worked
 alias carbon='cd ~/Documents/Doktor/carbon/spectra_analysis/models'
-alias CNO='cd ~/Documents/Doktor/CNO/evolutinary_tracks/ekstrom12_georgy13/massive_stars'
+alias CNO='cd ~/Documents/Doktor/CNO/cno_models'
 crb() { cd ~/Documents/Doktor/carbon/spectra_analysis/models; ls;}
 
 #Startup file to be read when IDL is loaded
@@ -190,3 +190,8 @@ export PS1='\[\033[0;36m\]\A\[\033[1;30m\] $(whoami)\[\033[0;32m\]$(__git_ps1)\[
 # history size to 1000 lines
 export HISTCONTROL=ignoredups
 export HISTSIZE=1000
+
+#npm init
+#npm install gulp
+#npm install gulp --save-dev
+#npm install gulp-autoprefixer --save-dev
