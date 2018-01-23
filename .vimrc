@@ -75,6 +75,7 @@ Plug 'mattn/emmet-vim'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'  "modify the theme (the normal one looks bad)
 "see https://github.com/vim-airline/vim-airline/wiki/Screenshots for all the themes
+Plug 'Yggdroot/indentLine'   "Add an indentation line 
 "
 "Vim Surround plug in. (Ex. cs" ' or cst") 
 Plug 'tpope/vim-surround'
@@ -98,6 +99,22 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_html_checkers = ['HTML']
+
+" Vim
+let g:indentLine_color_term = 239
+
+" GVim
+let g:indentLine_color_gui = '#7edee5'
+
+" none X terminal
+let g:indentLine_color_tty_light = 4 " (default: 4)
+let g:indentLine_color_dark = 2 " (default: 2)
+
+" Background (Vim, GVim)
+"let g:indentLine_bgcolor_term = 202
+"let g:indentLine_bgcolor_gui = '#FF5F00'
+let g:indentLine_char = '|'
+"let g:indentLine_setConceal = 3
 "
 "let g:syntastic_always_populate_loc_list = 1
 "let g:syntastic_auto_loc_list = 1
