@@ -195,3 +195,14 @@ export HISTSIZE=1000
 #npm install gulp
 #npm install gulp --save-dev
 #npm install gulp-autoprefixer --save-dev
+#npm run serve
+#browser-sync start --server --directory --files "**/*" &
+#sass --watch node_modules/bootstrap/scss:node_modules/bootstrap/compiler
+#npm install --save-dep gulp
+#npm install --save-dev gulp-imagemin
+#npm install --save-dev gulp-uglify
+#npm install gulp-sass --save-dev
+#npm install --save-dev gulp-concat
+#npm install browser-sync gulp --save-dev
+#npm install bootstrap@4.0.0-beta font-awesome jquery popper.js --save 
+#npm install gulp gulp-sass gulp-jade browser-synv --sav-dev
