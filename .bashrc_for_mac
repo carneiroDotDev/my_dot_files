@@ -207,4 +207,4 @@ export HISTSIZE=1000
 #npm install --save-dev gulp-concat
 #npm install browser-sync gulp --save-dev
 #npm install bootstrap@4.0.0-beta font-awesome jquery popper.js --save 
-#npm install gulp gulp-sass gulp-jade browser-synv --sav-dev
+#npm install gulp gulp-sass gulp-jade gulp-rename gulp-concat browser-synv --sav-dev
