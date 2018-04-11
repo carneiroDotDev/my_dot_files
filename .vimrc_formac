@@ -77,6 +77,10 @@ Plug 'vim-airline/vim-airline-themes'  "modify the theme (the normal one looks b
 "see https://github.com/vim-airline/vim-airline/wiki/Screenshots for all the themes
 Plug 'Yggdroot/indentLine'   "Add an indentation line 
 "
+"Add syntax JSX
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+"
 "Vim Surround plug in. (Ex. cs" ' or cst") 
 Plug 'tpope/vim-surround'
 "
@@ -565,23 +569,23 @@ function! Generate_sh()
 endfunction
 "------------------------------------------------------------
 " Folding
-
-" Enable syntax folding in javascript
+"" Enable syntax folding in javascript
 let javaScript_fold=1
 "
-" No fold closed at open file
+"" No fold closed at open file
 set foldenable
 "
 " Fold in respect to the indent level
  set foldmethod=indent
 
-"Starting fold level when opening a new file
-"if 0, all folds will be closed 
-"if 99, all fold are opened  
+""Starting fold level when opening a new file
+""if 0, all folds will be closed 
+""if 99, all fold are opened  
 set foldlevelstart=99
-
-"Folds can be also nested until a max
+"
+""Folds can be also nested until a max
 "set foldnestmax=10
-
-" Keymap to toggle folds with space
+"
+"" Keymap to toggle folds with space
  nnoremap <space> za
+"
