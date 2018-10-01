@@ -40,9 +40,10 @@ crb() { cd ~/Documents/Doktor/carbon/spectra_analysis/models; ls;}
 #Startup file to be read when IDL is loaded
 export IDL_STARTUP=/home/moon/luiz/idlproc/startup.pro
 
+#Add vscode in the PATH
+export PATH=$PATH:/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/
 #Include present directory in PATH
 export PATH=$PATH:.
-export PATH=$PATH:"/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
 #Some alias to type as less as possible
 
@@ -113,6 +114,12 @@ alias editBashPrompt="vim -e ~/.bash_prompt"
 alias reloadBashPrompt="source ~/.bash_prompt"
 alias editBashRc="vim -e ~/.bashrc"
 alias reloadBashRc="source ~/.bashrc"
+
+alias cleanWatchman="watchman watch-del-all"
+alias nodeReactNative="node ./rn-cli-config.js &"
+
+alias reactNativeCleanAll="watchman watch-del-all; rm -rf node_modules && yarn install; rm
+-rf /tmp/metro-bundler-cache-*; rm -rf /tmp/haste-map-react-native-packager-*"
 
 # alias for the use of GIT
 #s="git status -s"
@@ -208,4 +215,4 @@ export HISTSIZE=1000
 #npm install --save-dev gulp-concat
 #npm install browser-sync gulp --save-dev
 #npm install bootstrap@4.0.0-beta font-awesome jquery popper.js --save 
-#npm install gulp gulp-sass gulp-jade browser-synv --sav-dev
+#npm install gulp gulp-sass gulp-jade gulp-rename gulp-concat browser-synv --sav-dev
