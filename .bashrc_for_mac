@@ -45,6 +45,13 @@ export PATH=$PATH:/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/
 #Include present directory in PATH
 export PATH=$PATH:.
 
+#Setup of Android-Studio for react-native
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
 #Some alias to type as less as possible
 
 #alias +='pushd .'
@@ -120,6 +127,11 @@ alias nodeReactNative="node ./rn-cli-config.js &"
 
 alias reactNativeCleanAll="watchman watch-del-all; rm -rf node_modules && yarn install; rm
 -rf /tmp/metro-bundler-cache-*; rm -rf /tmp/haste-map-react-native-packager-*"
+
+alias nativeProblems="watchman watch-del-all; rm -rf /tmp/metro-bundler-cache-*; rm -rf /tmp/haste-map-react-native-packager-*"
+
+alias nativeProblems="watchman watch-del-all; rm -rf /tmp/metro-bundler-cache-*; rm -rf
+/tmp/haste-map-react-native-packager-*; rm -rf ~/.rncache"
 
 # alias for the use of GIT
 #s="git status -s"
@@ -216,3 +228,31 @@ export HISTSIZE=1000
 #npm install browser-sync gulp --save-dev
 #npm install bootstrap@4.0.0-beta font-awesome jquery popper.js --save 
 #npm install gulp gulp-sass gulp-jade gulp-rename gulp-concat browser-synv --sav-dev
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+#react-native
+#  react-native run-ios --simulator="iPhone 5s"
+#  react-native run-ios --simulator="iPhone 6"
+#  react-native run-ios --simulator="iPhone 6 Plus"
+#  react-native run-ios --simulator="iPhone 6s"
+#  react-native run-ios --simulator="iPhone 6s Plus"
+#  react-native run-ios --simulator="iPhone 7"
+#  react-native run-ios --simulator="iPhone 7 Plus"
+#  react-native run-ios --simulator="iPhone 8"
+#  react-native run-ios --simulator="iPhone 8 Plus"
+#  react-native run-ios --simulator="iPhone SE"
+#  react-native run-ios --simulator="iPhone X"
+#  react-native run-ios --simulator="iPhone XR"
+#  react-native run-ios --simulator="iPhone XS"
+#  react-native run-ios --simulator="iPhone XS Max"
+#  react-native run-ios --simulator="iPad Air"
+#  react-native run-ios --simulator="iPad Air 2"
+#  react-native run-ios --simulator="iPad"
+#  react-native run-ios --simulator="iPad Pro"
+#  react-native run-ios --simulator="iPad Pro"
+#  react-native run-ios --simulator="iPad Pro"
+#  react-native run-ios --simulator="iPad Pro"
+#  react-native run-ios --simulator="iPad"
