@@ -128,6 +128,10 @@ alias nodeReactNative="node ./rn-cli-config.js &"
 alias reactNativeCleanAll="watchman watch-del-all; rm -rf node_modules && yarn install; rm
 -rf /tmp/metro-bundler-cache-*; rm -rf /tmp/haste-map-react-native-packager-*"
 
+alias dockerTest="docker build -t luiz .; docker run -it -p 8080:80 luiz"
+
+alias huskyClean="rm -rf .git/hooks/; rm -rf node_modules; yarn"
+
 alias nativeProblems="watchman watch-del-all; rm -rf /tmp/metro-bundler-cache-*; rm -rf /tmp/haste-map-react-native-packager-*"
 
 alias nativeProblems="watchman watch-del-all; rm -rf /tmp/metro-bundler-cache-*; rm -rf
