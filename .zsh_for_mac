@@ -129,7 +129,7 @@ alias reactNativeCleanAll="watchman watch-del-all; rm -rf node_modules && yarn i
 -rf /tmp/metro-bundler-cache-*; rm -rf /tmp/haste-map-react-native-packager-*"
 
 alias dockerTest="docker build -t luiz .; docker run -it -p 8080:80 luiz"
-alias dockerClean="docker volume rm $(docker volume ls -qf dangling=true)"
+alias dockerClean="docker volume rm $(docker volume ls -qf dangling=true)" 
 
 alias huskyClean="rm -rf .git/hooks/; rm -rf node_modules; yarn"
 
