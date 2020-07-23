@@ -42,6 +42,7 @@ export IDL_STARTUP=/home/moon/luiz/idlproc/startup.pro
 
 #Add vscode in the PATH
 export PATH=$PATH:/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/
+export PATH="/Users/lcarneir/.deno/bin:$PATH"
 #Include present directory in PATH
 export PATH=$PATH:.
 
@@ -129,7 +130,6 @@ alias reactNativeCleanAll="watchman watch-del-all; rm -rf node_modules && yarn i
 -rf /tmp/metro-bundler-cache-*; rm -rf /tmp/haste-map-react-native-packager-*"
 
 alias dockerTest="docker build -t luiz .; docker run -it -p 8080:80 luiz"
-alias dockerClean="docker volume rm $(docker volume ls -qf dangling=true)"
 
 alias huskyClean="rm -rf .git/hooks/; rm -rf node_modules; yarn"
 
