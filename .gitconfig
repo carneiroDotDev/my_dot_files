@@ -1,6 +1,6 @@
 [user]
 	name = Luiz Carneiro
-	email = luuizpaulo@gmail.com
+	email = luiz@carneiro.dev
 [core]
 	editor = vim
 	whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
@@ -8,7 +8,7 @@
 [sendemail]
 	smtpencryption = tls
 	smtpserver = smtp.gmail.com
-	smtpuser = luuizpaulo@gmail.com
+	smtpuser = luiz@carneiro.dev 
 	smtppass = password
 	smtpserverport = 587
 [web]
