@@ -1,6 +1,8 @@
 [user]
 	name = Luiz Carneiro
 	email = luiz@carneiro.dev
+[init]
+        defaultBranch = main
 [core]
 	editor = vim
 	whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
