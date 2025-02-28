@@ -155,11 +155,11 @@ call plug#end()
 
 
 "Turn on the solorized colorscheme
- set background=light
- colorscheme solarized
-"There is also a darker look for the colorscheme
-" set background=dark
+" set background=light
 " colorscheme solarized
+"There is also a darker look for the colorscheme
+ set background=dark
+ colorscheme solarized
 
 "This will differenciate the colorscheme look depending 
 "if onw is using the GUI version or the terminal version of VI:
