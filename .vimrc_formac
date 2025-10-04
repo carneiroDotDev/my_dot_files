@@ -35,7 +35,7 @@
               set diffopt=filler,context:1000000   " filler is default and inserts empty lines for sync
               endif
 "
-" Version 1.0:
+" a first reference to write this file was:
 " URL: http://vim.wikia.com/wiki/Example_vimrc
 "------------------------------------------------------------
 " Features {{{1
@@ -70,16 +70,17 @@ call plug#begin('~/.vim/plugged')
 "The emmet plugin to make faster HTML/CSS typing
 Plug 'mattn/emmet-vim'
 "The Solorized colorscheme
-Plug 'altercation/vim-colors-solarized'
+" Plug 'altercation/vim-colors-solarized'
+
+"The Embark colorscheme
+"Plug 'embark-theme/vim', { 'as': 'embark', 'branch': 'main' }
+"colorscheme embark
+
 "The vim-airline status bar
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'  "modify the theme (the normal one looks bad)
 "see https://github.com/vim-airline/vim-airline/wiki/Screenshots for all the themes
 Plug 'Yggdroot/indentLine'   "Add an indentation line 
-"
-"Add syntax JSX
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
 "
 "Vim Surround plug in. (Ex. cs" ' or cst") 
 Plug 'tpope/vim-surround'
@@ -155,11 +156,11 @@ call plug#end()
 
 
 "Turn on the solorized colorscheme
-" set background=light
-" colorscheme solarized
+"set background=light
+"colorscheme solarized
 "There is also a darker look for the colorscheme
- set background=dark
- colorscheme solarized
+" set background=dark
+" colorscheme solarized
 
 "This will differenciate the colorscheme look depending 
 "if onw is using the GUI version or the terminal version of VI:
@@ -229,7 +230,7 @@ set exrc
 "set guifont=Menlo:h14
 "set guifont=Monaco:h14
 set spell spelllang=en_us
-set guifont=Monaco:h14
+"set guifont=Monaco:h14
 "set guifont=Inconsolata\ for\ Powerline:h18
 let g:Powerline_symbols = 'fancy'
 set encoding=utf-8
@@ -237,10 +238,10 @@ set t_Co=256
 set fillchars+=stl:\ ,stlnc:\
 set term=xterm-256color
 set termencoding=utf-8
-set linespace=3
+set linespace=1
  
 "------------------------------------------------------------
-" Usability options {{{1
+" Usability options
 "
 " These are options that users frequently set in their .vimrc. Some of them
 " change Vim's behaviour in ways which deviate from the true Vi way, but
@@ -361,12 +362,9 @@ map Y y$
 " next search
 " nnoremap <C-L> :nohl<CR><C-L>
 
-map  <C-l> :tabn<CR>    
-"Move to next tab
-map  <C-h> :tabp<CR>    
-"Move to previous tab
-map  <C-n> :tabnew<CR>  
-"Create new tab
+map  <C-l> :tabn<CR>    "Move to next tab
+map  <C-h> :tabp<CR>    "Move to previous tab
+map  <C-n> :tabnew<CR>  "Create new tab
 
 "set list
 "set listchars=tab:>-    "Two characters to be used to show a tab.  The first
@@ -396,7 +394,7 @@ imap <S-A-t> </h1>
 ab lorem1 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. 
 ab lorem2 Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. 
 ab lorem3 Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. 
-ab lorem4 Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. 
+ab lorem4 Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, el, luctus pulvinar, hendrerit id, lorem. 
 ab lorem5 Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. 
 ab lorem6 Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,
 
@@ -569,23 +567,23 @@ function! Generate_sh()
 endfunction
 "------------------------------------------------------------
 " Folding
-"" Enable syntax folding in javascript
-let javaScript_fold=1
-"
-"" No fold closed at open file
-set foldenable
-"
-" Fold in respect to the indent level
- set foldmethod=indent
 
-""Starting fold level when opening a new file
-""if 0, all folds will be closed 
-""if 99, all fold are opened  
+" Enable syntax folding in javascript
+let javaScript_fold=1
+
+" No fold closed at open file
+set foldenable
+
+"Starting fold level when opening a new file
+"if 0, all folds will be closed 
+"if 99, all fold are opened  
 set foldlevelstart=99
-"
-""Folds can be also nested until a max
-"set foldnestmax=10
-"
-"" Keymap to toggle folds with space
+
+"Folds can be also nested until a max
+set foldnestmax=10
+
+" Keymap to toggle folds with space
  nnoremap <space> za
-"
+
+ " Fold in respect to the indent level
+ set foldmethod=indent
