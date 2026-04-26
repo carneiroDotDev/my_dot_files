@@ -188,7 +188,7 @@ alias you='if test "$EUID" = 0 ; then /sbin/yast2 online_update ; else su - -c "
 
 # editing/reloading bash configs
 alias editBash="vim ~/.bash_profile"
-alias editZsh="vim ~/.zshrc"
+alias editZsh="nv ~/.zshrc"
 alias reloadBash="source ~/.bash_profile"
 alias reloadZsh="source ~/.zshrc"
 alias editBashPrompt="vim ~/.bash_prompt"
@@ -210,7 +210,11 @@ alias ntsc="npm run tsc"
 alias nin="npm install"
 
 alias p3="python3"
+alias py="python3"
 alias python="python3"
+alias llmEngineer="conda activate llms; jupyter lab;"
+
+alias ag="antigravity"
 
 alias drun="dotnet run"
 
@@ -228,12 +232,6 @@ alias nativeProblems="watchman watch-del-all; rm -rf /tmp/metro-bundler-cache-*;
 
 alias nativeProblems="watchman watch-del-all; rm -rf /tmp/metro-bundler-cache-*; rm -rf
 /tmp/haste-map-react-native-packager-*; rm -rf ~/.rncache"
-
-alias coding="cd /Users/luizcarneiro/Documents/Coding"
-alias smapiot="cd /Users/luizcarneiro/Documents/Coding/smapiot"
-alias projects="cd /Users/luizcarneiro/Documents/Coding/projects"
-alias cloudPortalService="cd /Users/luizcarneiro/Documents/Coding/cloud-portal-service/src/CloudPortalService"
-alias llmEngineer="conda activate llms; jupyter lab;"
 
 # alias for the use of GIT
 #s="git status -s"
@@ -279,12 +277,24 @@ alias gs="git status --short"
 alias glpf="git log --pretty=format:'%h - %an, %ar : %s'"
 alias grv="git remote -v"
 alias grau="git remote add upstream "  #This alias requests the link of the original repo after it
+alias undoLastLocalCommit="git reset --soft HEAD~1"
 # git config --global core.editor --> To set the editor = $EDITOR
 #
 
 # alias for Kubernetes
-alias minikubeBootDev='minikube start --extra-config "apiserver.cors-allowed-origins=["http://boot.dev"]'
+alias minikubeBootDev='minikube start --extra-config "apiserver.cors-allowed-origins=["http://boot.dev"]"'
 alias minikubeDashboard='minikube dashboard --port=63840'
+alias k='kubectl'
+alias kg='kubectl get'
+alias kgp='kubectl get pods'
+alias kgd='kubectl get deployments'
+alias kdep='kubectl deployments'
+alias kdel='kubectl delete'
+alias kdes='kubectl describe'
+alias kdesp='kubectl describe pod'
+alias kaf='kubectl apply -f'
+alias kl='kubectl logs'
+alias kexec='kubectl exec -it'
 
 #alias in form of functions
 mcd() { mkdir -p "$1"; cd "$1";}  #Make a directory and cd into it in one command: mcd name
@@ -322,6 +332,9 @@ eval "$(zoxide init zsh)"
 
 alias cd="z"
 
+#--- UV - Python -----
+alias urun="uv run"
+alias uinit="uv init"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -342,3 +355,39 @@ unset __conda_setup
 
 # Load Angular CLI autocompletion.
 source <(ng completion script)
+
+
+# Tell gcloud to use your active 3.13.5 version
+export CLOUDSDK_PYTHON=$(command -v python3)
+
+# Tell UV to always default to your preferred version
+export UV_PYTHON=3.13
+
+# Functions as alias
+port() {
+  lsof -i tcp:"$1"
+}
+
+# Load private configurations if the file exists
+if [ -f ~/.zshrc_private ]; then
+    source ~/.zshrc_private
+fi
+
+# Evict a specific process by its PID
+killpid() {
+  kill -9 "$1"
+}
+
+# Find and evict whatever process is occupying a specific port
+killport() {
+  # The -t flag tells lsof to return ONLY the Process ID (PID)
+  local pid=$(lsof -t -i tcp:"$1")
+  
+  if [ -z "$pid" ]; then
+    echo "Port $1 is already free."
+  else
+    kill -9 $pid
+    echo "Killed process $pid on port $1."
+  fi
+}
+
